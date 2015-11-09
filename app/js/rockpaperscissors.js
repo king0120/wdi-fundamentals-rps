@@ -21,6 +21,10 @@ function randomPlay() {
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 
+function numberOfGames(){
+    console.log("Good luck! Best of how many games?");
+    return prompt();
+}
 
 function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
@@ -78,16 +82,19 @@ function getWinner(playerMove,computerMove) {
 var playerWins = 0;
 var computerWins = 0;
 
-function playTo(x) {
-    console.log("Let's play Rock, Paper, Scissors");
 
-    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
+
+function playTo(x) {
+    
+
     if (playerWins < x && computerWins < x) {
             
         var playerMove = getPlayerMove(getInput());
         var computerMove = getComputerMove(randomPlay());
         var winner = getWinner(playerMove, computerMove);
+
         console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+        //Announce the Winner
         if (winner === 'player'){
             console.log('Player Wins!');
             playerWins++;
@@ -97,13 +104,20 @@ function playTo(x) {
         } else {
             console.log("It's a tie!");
         }
+        //Announce the Current Score
         console.log('The score is ' + playerWins + ' for Player and ' + computerWins + ' for Computer.');
+        playTo(x);
     } else if (playerWins === x){
+        //If player has won the number of games specified by playTo(x)
         console.log('Player is the Rock, Paper, Scissors champion!');
     } else {
+        //If computer has won the number of games specified by playTo(x)
         console.log('Computer is the Rock, Paper, Scissors champion!');
     }
+
     return [playerWins, computerWins];
 }
 
-playTo(3);
+console.log("Let's play Rock, Paper, Scissors");
+
+playTo(numberOfGames());
