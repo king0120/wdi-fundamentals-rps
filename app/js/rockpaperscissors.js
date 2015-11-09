@@ -17,13 +17,22 @@ function randomPlay() {
         return "scissors";
     }
 }
+
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 
 function numberOfGames(){
     console.log("Good luck! Best of how many games?");
-    return prompt();
+    var gamesInt = parseInt(prompt(), 10);
+    //Checks if the user input is a number.  
+    if ( typeof gamesInt === 'number' && isNaN(gamesInt) === false){
+        console.log(gamesInt);
+        return gamesInt;
+    } else {
+        //Repeats prompt until the prompt is a number.
+        playTo(numberOfGames());
+    }
 }
 
 function getPlayerMove(move) {
@@ -110,7 +119,7 @@ function playTo(x) {
     } else if (playerWins === x){
         //If player has won the number of games specified by playTo(x)
         console.log('Player is the Rock, Paper, Scissors champion!');
-    } else {
+    } else if (computerWins === x){
         //If computer has won the number of games specified by playTo(x)
         console.log('Computer is the Rock, Paper, Scissors champion!');
     }
@@ -118,6 +127,10 @@ function playTo(x) {
     return [playerWins, computerWins];
 }
 
+function startGame(){
 console.log("Let's play Rock, Paper, Scissors");
-
+playerWins = 0;
+computerWins = 0;
 playTo(numberOfGames());
+
+}
