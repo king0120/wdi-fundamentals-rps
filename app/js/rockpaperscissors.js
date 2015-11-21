@@ -127,6 +127,10 @@ function playTo(x) {
     return [playerWins, computerWins];
 }
 
+function playToFive(){
+    return playTo(5);
+}
+
 function startGame(){
 console.log("Let's play Rock, Paper, Scissors");
 playerWins = 0;
